@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking de Likes por Libro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Ranking de Likes por Libro</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Libro</th>
+                <th>Total de Likes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in likes_by_book %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ libro.nombre_libro }}</td>
+                <td>{{ libro.total_likes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('user.index') }}">Inicio</a>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<h1>Lista de libros</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Imagen</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for libro in libros %}
+        <tr>
+            <td>{{ libro.id_libro}} </td>
+            <td>{{ libro.nombre_libro }}</td>
+            <td>{{ libro.categoria }}</td>
+            <td>
+                <img src="{{ url_for('static', filename='uploads/' + libro.imagen) }}" alt="{{ libro.nombre_libro }}" style="width: 100px;">
+            </td>
+            <td><a href="{{ libro.url }}" target="_blank">{{ libro.url }}</a></td>
+        <td>
+            <form action="{{ url_for('user.like_book', libro_id=libro.id_libro) }}" method="POST" style="display: inline;">
+            <button type="submit" class="btn btn-success">Like</button> 
+        </form>
+        </td>
+        <td>
+            <a href="{{ url_for('user.view_comments', libro_id=libro.id_libro) }}" class="btn btn-info">Ver Comentarios</a>
+        </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('user.index') }}">Inicio</a>

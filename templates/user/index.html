@@ -1,0 +1,26 @@
+
+<!DOCTYPE html<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+</head>
+<body>
+
+    <h1>Bienvenido a la sección de Usuario</h1>
+    
+    <h1>Bienvenido, {{ user.nombre }}</h1>  <!-- Imprimir el nombre del usuario -->
+    
+    <p>Correo electrónico: {{ user.correo }}</p>  <!-- Imprimir el correo del usuario -->
+    
+    <p>Tipo de cuenta: {% if user.is_admin %}Administrador{% else %}Usuario{% endif %}</p>  <!-- Verificar si es admin -->
+    
+    <a href="{{ url_for('byte.logout') }}" class="btn btn-danger">Cerrar sesión</a>
+
+</body>
+</html>
+
+<a href="{{ url_for('user.view_books') }}">Ver libros</a>
+
+<a href="{{ url_for('user.book_likes') }}">Ranking</a>
+
